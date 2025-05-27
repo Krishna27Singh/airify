@@ -12,13 +12,22 @@ const Login = () => {
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post("http://localhost:1000/login", formData);
+     const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/login`, formData);
       localStorage.setItem("token", response.data.token);
       navigate("/home");
     } catch (error) {
       alert(error.response?.data?.message || "Login failed");
     }
   };
+
+
+
+const googleAuth = () => {
+		window.open(
+  `${import.meta.env.VITE_BACKEND_URL}/auth/google`,
+  "_self"
+);
+	};
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-purple-500 to-blue-500">
@@ -48,6 +57,19 @@ const Login = () => {
         >
           Login
         </button>
+
+
+        <p className="text-[14px] text-[#2c444e] my-[5px] py-0">or</p>
+					<button  className="w-[230px] h-[40px] rounded-[5px] bg-white shadow-md 
+             font-medium text-base mb-5 text-[#2c444e] cursor-pointer 
+             flex items-center justify-center gap-2"
+              onClick={googleAuth}>
+						<img 
+              className="w-[12%] "
+              src="/images/google.png" alt="google icon" />
+						<span  className="pl-x-10">Sign in with Google</span>
+					</button>
+
         <p className="text-sm text-center text-gray-600 mt-4">
           Don't have an account?{" "}
           <span
