@@ -214,7 +214,7 @@ const Dashboard = () => {
                   type="text"
                   value={locationInput}
                   onChange={(e) => setLocationInput(e.target.value)}
-                  placeholder="Enter city name (e.g., Mumbai) or coordinates (e.g., 19.0760,72.8777)"
+                  placeholder="Enter city name or coordinates"
                   className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all duration-200"
                   disabled={loading}
                 />
