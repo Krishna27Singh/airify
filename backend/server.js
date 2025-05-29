@@ -1,6 +1,7 @@
 const app = require("./app");
 const connectDB = require("./config/db");
 
+
 const PORT = process.env.PORT || 8000;
 
 connectDB();
@@ -19,7 +20,13 @@ const cors = require('cors');
 require('dotenv').config();
 const authRoute = require('./routes/auth');
 require('./config/passport'); 
+const reportRoutes = require('./routes/reportRoutes');
 
+app.use(cors({
+  origin: 'http://localhost:8080', // Match your frontend's exact origin
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+}));
 
 connectDB();
 
@@ -31,11 +38,11 @@ app.use(session({
 }));
 
 
-app.use(cors({
-  origin: process.env.CLIENT_URL,
-  methods: 'GET,POST,PUT,DELETE',
-  credentials: true
-}));
+// app.use(cors({
+//   origin: process.env.CLIENT_URL,
+//   methods: 'GET,POST,PUT,DELETE',
+//   credentials: true
+// }));
 
 app.use(bodyParser.json());
 app.use(passport.initialize());
@@ -43,6 +50,7 @@ app.use(passport.session());
 
 
 app.use('/auth', authRoute);
+app.use('/api', reportRoutes);
 
 async function getAQIData(lat, lon) {
   const waqiApiToken = process.env.WAQI_API_TOKEN;
