@@ -19,19 +19,21 @@ const Login = () => {
         formData
       );
       const { token, name, email } = response.data;
-
-      // Save the token to localStorage
+  
+      // Save the token and user data to localStorage
       localStorage.setItem("token", token);
-
+      localStorage.setItem("user", JSON.stringify({ email, name }));
+  
       // Set the user in the context
       setUser({ email, name });
-
+  
       // Navigate to the home page
       navigate("/home");
     } catch (error) {
       alert(error.response?.data?.message || "Login failed");
     }
   };
+  
 
   const googleAuth = () => {
     window.open(`${import.meta.env.VITE_BACKEND_URL}/auth/google`, "_self");

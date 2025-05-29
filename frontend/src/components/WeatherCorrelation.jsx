@@ -54,7 +54,7 @@ const WeatherCorrelation = ({ currentData }) => {
         <div className="bg-gradient-to-br from-orange-50 to-orange-100 rounded-xl p-4 text-center">
           <Thermometer className="mx-auto mb-2 text-orange-500" size={24} />
           <p className="text-sm text-gray-600">Temperature</p>
-          <p className="text-xl font-bold text-gray-800">{currentData.temperature}°C</p>
+          <p className="text-xl font-bold text-gray-800">{currentData.temperature.toFixed(3)}°C</p>
           <div className="mt-2 w-full bg-gray-200 rounded-full h-2">
             <div 
               className="bg-gradient-to-r from-orange-400 to-orange-600 h-2 rounded-full transition-all duration-1000"
@@ -66,7 +66,7 @@ const WeatherCorrelation = ({ currentData }) => {
         <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-4 text-center">
           <Droplets className="mx-auto mb-2 text-blue-500" size={24} />
           <p className="text-sm text-gray-600">Humidity</p>
-          <p className="text-xl font-bold text-gray-800">{currentData.humidity}%</p>
+          <p className="text-xl font-bold text-gray-800">{currentData.humidity.toFixed(3)}%</p>
           <div className="mt-2 w-full bg-gray-200 rounded-full h-2">
             <div 
               className="bg-gradient-to-r from-blue-400 to-blue-600 h-2 rounded-full transition-all duration-1000"
@@ -78,7 +78,7 @@ const WeatherCorrelation = ({ currentData }) => {
         <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl p-4 text-center">
           <Wind className="mx-auto mb-2 text-gray-500" size={24} />
           <p className="text-sm text-gray-600">Wind Speed</p>
-          <p className="text-xl font-bold text-gray-800">{currentData.windSpeed} km/h</p>
+          <p className="text-xl font-bold text-gray-800">{currentData.windSpeed.toFixed(3)} km/h</p>
           <div className="mt-2 w-full bg-gray-200 rounded-full h-2">
             <div 
               className="bg-gradient-to-r from-gray-400 to-gray-600 h-2 rounded-full transition-all duration-1000"
@@ -92,7 +92,7 @@ const WeatherCorrelation = ({ currentData }) => {
             <span className="text-white text-xs font-bold">AQI</span>
           </div>
           <p className="text-sm text-gray-600">Air Quality</p>
-          <p className="text-xl font-bold text-gray-800">{Math.round(currentData.aqi)}</p>
+          <p className="text-xl font-bold text-gray-800">{Math.round(currentData.aqi).toFixed(3)}</p>
           <div className="mt-2 w-full bg-gray-200 rounded-full h-2">
             <div 
               className="bg-gradient-to-r from-indigo-400 to-indigo-600 h-2 rounded-full transition-all duration-1000"

@@ -7,6 +7,10 @@ import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
 import Community from "./pages/Community";
+import Challenges from "./pages/Challenges";
+import ReportProblems from "./pages/ReportProblems";
+import UserStories from "./pages/UserStories";
+import Forum from "./pages/Forum";
 import Chatbot from "./pages/Chatbot";
 import Profile from "./pages/Profile";
 import NotFound from "./pages/NotFound";
@@ -63,6 +67,38 @@ const App = () => (
               element={
                 <ProtectedRoute>
                   <Community />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/challenges"
+              element={
+                <ProtectedRoute>
+                  <Challenges />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/report-problems"
+              element={
+                <ProtectedRoute>
+                  <ReportProblems />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/user-stories"
+              element={
+                <ProtectedRoute>
+                  <UserStories />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/forum"
+              element={
+                <ProtectedRoute>
+                  <Forum />
                 </ProtectedRoute>
               }
             />

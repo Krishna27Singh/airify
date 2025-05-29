@@ -42,7 +42,8 @@ const Dashboard = () => {
   const [hasData, setHasData] = useState(false);
   const [gettingLocation, setGettingLocation] = useState(false);
 
-  const API_TOKEN = '2d0cb996f45520d273a8e6ebc45c7742225d23b0';
+  const API_TOKEN = import.meta.env.VITE_WAQI_API_TOKEN;
+  console.log(API_TOKEN)
 
   const fetchAirQualityData = async (location) => {
     setLoading(true);
@@ -304,7 +305,7 @@ const Dashboard = () => {
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-orange-700 text-sm font-medium">Temperature</p>
-                    <p className="text-3xl font-bold text-orange-800">{currentData.temperature}°C</p>
+                    <p className="text-3xl font-bold text-orange-800">{currentData.temperature.toFixed(3)}°C</p>
                     <div className="mt-2 w-full bg-orange-200 rounded-full h-2">
                       <div 
                         className="bg-gradient-to-r from-orange-400 to-red-500 h-2 rounded-full transition-all duration-1000"
@@ -320,7 +321,7 @@ const Dashboard = () => {
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-blue-700 text-sm font-medium">Humidity</p>
-                    <p className="text-3xl font-bold text-blue-800">{currentData.humidity}%</p>
+                    <p className="text-3xl font-bold text-blue-800">{currentData.humidity.toFixed(3)}%</p>
                     <div className="mt-2 w-full bg-blue-200 rounded-full h-2">
                       <div 
                         className="bg-gradient-to-r from-blue-400 to-cyan-500 h-2 rounded-full transition-all duration-1000"
@@ -336,7 +337,7 @@ const Dashboard = () => {
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-gray-700 text-sm font-medium">Wind Speed</p>
-                    <p className="text-3xl font-bold text-gray-800">{currentData.windSpeed} km/h</p>
+                    <p className="text-3xl font-bold text-gray-800">{currentData.windSpeed.toFixed(3)} km/h</p>
                     <div className="mt-2 w-full bg-gray-200 rounded-full h-2">
                       <div 
                         className="bg-gradient-to-r from-gray-400 to-slate-500 h-2 rounded-full transition-all duration-1000"
@@ -352,7 +353,7 @@ const Dashboard = () => {
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-purple-700 text-sm font-medium">Visibility</p>
-                    <p className="text-3xl font-bold text-purple-800">{currentData.visibility} km</p>
+                    <p className="text-3xl font-bold text-purple-800">{currentData.visibility.toFixed(3)} km</p>
                     <div className="mt-2 w-full bg-purple-200 rounded-full h-2">
                       <div 
                         className="bg-gradient-to-r from-purple-400 to-violet-500 h-2 rounded-full transition-all duration-1000"
