@@ -1,8 +1,14 @@
 const mongoose = require("mongoose");
+require("dotenv").config(); // Load environment variables from .env file
 
 const connectDB = async () => {
   try {
-    await mongoose.connect("mongodb://localhost:27017/aqt", {
+    const mongoURI = process.env.MONGO_URI;
+    if (!mongoURI) {
+      throw new Error("MongoDB URI is not defined in the environment variables.");
+    }
+
+    await mongoose.connect(mongoURI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
