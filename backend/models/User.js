@@ -5,6 +5,7 @@ const UserSchema = new mongoose.Schema({
   age: { type: Number, required: true },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
+  location: {latitude: Number, longitude: Number,},
 });
 
 module.exports = mongoose.model("User", UserSchema);

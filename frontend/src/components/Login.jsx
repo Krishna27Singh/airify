@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../context/UserContext";
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
+  const { setUser } = useContext(UserContext);
   const navigate = useNavigate();
 
   const handleInputChange = (e) => {
@@ -12,22 +14,28 @@ const Login = () => {
 
   const handleLogin = async () => {
     try {
-     const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/login`, formData);
-      localStorage.setItem("token", response.data.token);
+      const response = await axios.post(
+        `${import.meta.env.VITE_BACKEND_URL}/login`,
+        formData
+      );
+      const { token, name, email } = response.data;
+
+      // Save the token to localStorage
+      localStorage.setItem("token", token);
+
+      // Set the user in the context
+      setUser({ email, name });
+
+      // Navigate to the home page
       navigate("/home");
     } catch (error) {
       alert(error.response?.data?.message || "Login failed");
     }
   };
 
-
-
-const googleAuth = () => {
-		window.open(
-  `${import.meta.env.VITE_BACKEND_URL}/auth/google`,
-  "_self"
-);
-	};
+  const googleAuth = () => {
+    window.open(`${import.meta.env.VITE_BACKEND_URL}/auth/google`, "_self");
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-purple-500 to-blue-500">
@@ -58,17 +66,20 @@ const googleAuth = () => {
           Login
         </button>
 
-
         <p className="text-[14px] text-[#2c444e] my-[5px] py-0">or</p>
-					<button  className="w-[230px] h-[40px] rounded-[5px] bg-white shadow-md 
+        <button
+          className="w-[230px] h-[40px] rounded-[5px] bg-white shadow-md 
              font-medium text-base mb-5 text-[#2c444e] cursor-pointer 
              flex items-center justify-center gap-2"
-              onClick={googleAuth}>
-						<img 
-              className="w-[12%] "
-              src="/images/google.png" alt="google icon" />
-						<span  className="pl-x-10">Sign in with Google</span>
-					</button>
+          onClick={googleAuth}
+        >
+          <img
+            className="w-[12%]"
+            src="/images/google.png"
+            alt="google icon"
+          />
+          <span className="pl-x-10">Sign in with Google</span>
+        </button>
 
         <p className="text-sm text-center text-gray-600 mt-4">
           Don't have an account?{" "}
