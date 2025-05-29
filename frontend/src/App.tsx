@@ -12,6 +12,7 @@ import Profile from "./pages/Profile";
 import NotFound from "./pages/NotFound";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
+import Explore from "./components/Explore";
 
 const queryClient = new QueryClient();
 
@@ -78,6 +79,14 @@ const App = () => (
               element={
                 <ProtectedRoute>
                   <Profile />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/explore"
+              element={
+                <ProtectedRoute>
+                  <Explore />
                 </ProtectedRoute>
               }
             />

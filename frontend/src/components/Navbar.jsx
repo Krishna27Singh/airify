@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Home, BarChart3, Users, MessageSquare, User, Wind, LogOut } from "lucide-react";
+import { Home, BarChart3, Users, MessageSquare, User, Wind, LogOut, SearchCheck } from "lucide-react";
 import { UserContext } from "../context/UserContext";
 
 const Navbar = () => {
@@ -13,7 +13,7 @@ const Navbar = () => {
     { name: "Home", path: "/home", icon: Home },
     { name: "Dashboard", path: "/dashboard", icon: BarChart3 },
     { name: "Community", path: "/community", icon: Users },
-    { name: "Chatbot", path: "/chatbot", icon: MessageSquare },
+    { name: "Explore", path: "/explore", icon: SearchCheck},
   ];
 
   const toggleDropdown = () => {
