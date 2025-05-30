@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { CheckCircle, XCircle, RefreshCw, Trophy, Brain, Timer, Zap } from 'lucide-react';
+import { CheckCircle, XCircle, RefreshCw, Trophy, Brain, Timer, Zap, Star } from 'lucide-react';
 import { BadgeContext } from './Explore';
 
 const Quizzes = () => {
@@ -13,6 +13,7 @@ const Quizzes = () => {
 
   const { addBadge, updateAchievements, achievements } = useContext(BadgeContext);
 
+  // ... keep existing code (quizzes array and other logic)
   const quizzes = [
     {
       id: 1,
@@ -199,20 +200,20 @@ const Quizzes = () => {
     updateAchievements('quizzesCompleted');
 
     if (newAchievements === 1) {
-      addBadge('first-quiz', 'Quiz Starter', 'Complete your first quiz', <Brain className="w-8 h-8" />, 'from-blue-400 to-blue-600');
+      addBadge('first-quiz', 'Quiz Starter', 'Complete your first quiz', <Brain className="w-8 h-8" />, 'from-[#4FD1C5] to-[#2C7A7B]');
     }
     
     if (newAchievements === 5) {
-      addBadge('quiz-master', 'Quiz Master', 'Complete 5 quizzes', <Trophy className="w-8 h-8" />, 'from-purple-400 to-purple-600');
+      addBadge('quiz-master', 'Quiz Master', 'Complete 5 quizzes', <Trophy className="w-8 h-8" />, 'from-[#319795] to-[#2C7A7B]');
     }
     
     if (isCorrect && score + 1 === quizzes.length) {
-      addBadge('perfect-score', 'Perfect Scholar', 'Get 100% on a quiz', <Star className="w-8 h-8" />, 'from-yellow-400 to-yellow-600');
+      addBadge('perfect-score', 'Perfect Scholar', 'Get 100% on a quiz', <Star className="w-8 h-8" />, 'from-[#4FD1C5] to-[#319795]');
       updateAchievements('perfectQuizzes');
     }
     
     if (timeTaken < 10) {
-      addBadge('speed-demon', 'Speed Demon', 'Complete a quiz in under 10 seconds', <Zap className="w-8 h-8" />, 'from-cyan-400 to-cyan-600');
+      addBadge('speed-demon', 'Speed Demon', 'Complete a quiz in under 10 seconds', <Zap className="w-8 h-8" />, 'from-[#4FD1C5] to-[#319795]');
     }
   };
 
@@ -248,42 +249,42 @@ const Quizzes = () => {
     <div className="max-w-4xl mx-auto space-y-6">
       <div className="text-center mb-8">
         <div className="flex items-center justify-center space-x-3 mb-4">
-          <Brain className="w-8 h-8 text-purple-600" />
-          <h2 className="text-3xl font-bold text-gray-800">Air Quality Quiz Challenge</h2>
-          <Trophy className="w-8 h-8 text-yellow-500" />
+          <Brain className="w-8 h-8 text-[#319795]" />
+          <h2 className="text-3xl font-bold text-[#2C7A7B]">Air Quality Quiz Challenge</h2>
+          <Trophy className="w-8 h-8 text-[#4FD1C5]" />
         </div>
-        <p className="text-gray-600">Test your knowledge and become an air quality expert!</p>
+        <p className="text-[#2C7A7B]">Test your knowledge and become an air quality expert!</p>
         
         {/* Enhanced Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
-          <div className="bg-gradient-to-r from-blue-100 to-blue-200 rounded-lg p-3">
-            <div className="text-2xl font-bold text-blue-800">{achievements.quizzesCompleted}</div>
-            <div className="text-xs text-blue-600">Total Completed</div>
+          <div className="bg-gradient-to-r from-[#E6FFFA] to-[#4FD1C5]/20 rounded-lg p-3 border border-[#4FD1C5]">
+            <div className="text-2xl font-bold text-[#2C7A7B]">{achievements.quizzesCompleted}</div>
+            <div className="text-xs text-[#319795]">Total Completed</div>
           </div>
-          <div className="bg-gradient-to-r from-purple-100 to-purple-200 rounded-lg p-3">
-            <div className="text-2xl font-bold text-purple-800">{achievements.perfectQuizzes}</div>
-            <div className="text-xs text-purple-600">Perfect Scores</div>
+          <div className="bg-gradient-to-r from-[#E6FFFA] to-[#319795]/20 rounded-lg p-3 border border-[#319795]">
+            <div className="text-2xl font-bold text-[#2C7A7B]">{achievements.perfectQuizzes}</div>
+            <div className="text-xs text-[#319795]">Perfect Scores</div>
           </div>
-          <div className="bg-gradient-to-r from-green-100 to-green-200 rounded-lg p-3">
-            <div className="text-2xl font-bold text-green-800">{score}/{quizzes.length}</div>
-            <div className="text-xs text-green-600">Current Score</div>
+          <div className="bg-gradient-to-r from-[#E6FFFA] to-[#4FD1C5]/20 rounded-lg p-3 border border-[#4FD1C5]">
+            <div className="text-2xl font-bold text-[#2C7A7B]">{score}/{quizzes.length}</div>
+            <div className="text-xs text-[#319795]">Current Score</div>
           </div>
-          <div className="bg-gradient-to-r from-orange-100 to-orange-200 rounded-lg p-3">
-            <div className="text-2xl font-bold text-orange-800">{timeSpent > 0 ? `${timeSpent.toFixed(1)}s` : '--'}</div>
-            <div className="text-xs text-orange-600">Last Answer</div>
+          <div className="bg-gradient-to-r from-[#E6FFFA] to-[#319795]/20 rounded-lg p-3 border border-[#319795]">
+            <div className="text-2xl font-bold text-[#2C7A7B]">{timeSpent > 0 ? `${timeSpent.toFixed(1)}s` : '--'}</div>
+            <div className="text-xs text-[#319795]">Last Answer</div>
           </div>
         </div>
       </div>
 
       {/* Enhanced Progress Bar */}
-      <div className="bg-gray-200 rounded-full h-4 mb-6 relative overflow-hidden">
+      <div className="bg-[#E6FFFA] rounded-full h-4 mb-6 relative overflow-hidden border border-[#4FD1C5]">
         <div 
-          className="bg-gradient-to-r from-purple-500 via-blue-500 to-green-500 h-4 rounded-full transition-all duration-500 relative"
+          className="bg-gradient-to-r from-[#2C7A7B] to-[#4FD1C5] h-4 rounded-full transition-all duration-500 relative"
           style={{ width: `${((currentQuiz + (showResult ? 1 : 0)) / quizzes.length) * 100}%` }}
         >
           <div className="absolute inset-0 bg-white/30 animate-pulse"></div>
         </div>
-        <div className="absolute right-2 top-1/2 transform -translate-y-1/2 text-xs font-bold text-gray-600">
+        <div className="absolute right-2 top-1/2 transform -translate-y-1/2 text-xs font-bold text-[#2C7A7B]">
           {currentQuiz + 1}/{quizzes.length}
         </div>
       </div>
@@ -291,21 +292,21 @@ const Quizzes = () => {
       {/* Timer and Category */}
       <div className="flex justify-between items-center mb-6">
         <div className="flex items-center space-x-2">
-          <div className="bg-gradient-to-r from-purple-500 to-blue-500 text-white px-3 py-1 rounded-full text-sm font-medium">
+          <div className="bg-gradient-to-r from-[#2C7A7B] to-[#4FD1C5] text-white px-3 py-1 rounded-full text-sm font-medium">
             {currentQuizData.category.toUpperCase()}
           </div>
         </div>
-        <div className="flex items-center space-x-2 text-gray-600">
+        <div className="flex items-center space-x-2 text-[#2C7A7B]">
           <Timer className="w-4 h-4" />
           <span className="text-sm">Question {currentQuiz + 1} of {quizzes.length}</span>
         </div>
       </div>
 
       {!isCompleted ? (
-        <div className="bg-white rounded-2xl shadow-xl p-8 border-2 border-gray-100 relative overflow-hidden">
-          <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-purple-500 via-blue-500 to-green-500"></div>
+        <div className="bg-white rounded-2xl shadow-xl p-8 border-2 border-[#E6FFFA] relative overflow-hidden">
+          <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-[#2C7A7B] to-[#4FD1C5]"></div>
           
-          <h3 className="text-xl font-semibold text-gray-800 mb-6">
+          <h3 className="text-xl font-semibold text-[#2C7A7B] mb-6">
             {currentQuizData.question}
           </h3>
 
@@ -322,7 +323,7 @@ const Quizzes = () => {
                       : index === selectedAnswer
                       ? 'bg-red-100 border-red-500 text-red-800'
                       : 'bg-gray-100 border-gray-300 text-gray-600'
-                    : 'bg-gradient-to-r from-gray-50 to-white border-gray-200 hover:from-blue-50 hover:to-purple-50 hover:border-purple-300 hover:scale-105 hover:shadow-md'
+                    : 'bg-[#E6FFFA] border-[#4FD1C5] hover:bg-white hover:border-[#2C7A7B] hover:scale-105 hover:shadow-md text-[#2C7A7B]'
                 }`}
               >
                 <div className="flex items-center justify-between">
@@ -346,10 +347,10 @@ const Quizzes = () => {
           </div>
 
           {showResult && (
-            <div className="bg-gradient-to-r from-blue-50 to-purple-50 border-l-4 border-blue-500 p-4 mb-6 animate-fade-in rounded-lg">
-              <p className="text-blue-800 font-medium mb-2 flex items-center">
+            <div className="bg-[#E6FFFA] border-l-4 border-[#4FD1C5] p-4 mb-6 animate-fade-in rounded-lg">
+              <p className="text-[#2C7A7B] font-medium mb-2 flex items-center">
                 {selectedAnswer === currentQuizData.correct ? (
-                  <>🎉 Correct! <Zap className="w-4 h-4 ml-2 text-yellow-500" /></>
+                  <>🎉 Correct! <Zap className="w-4 h-4 ml-2 text-[#4FD1C5]" /></>
                 ) : (
                   '❌ Incorrect'
                 )}
@@ -357,7 +358,7 @@ const Quizzes = () => {
                   <span className="ml-auto text-sm">({timeSpent.toFixed(1)}s)</span>
                 )}
               </p>
-              <p className="text-blue-700">{currentQuizData.explanation}</p>
+              <p className="text-[#319795]">{currentQuizData.explanation}</p>
             </div>
           )}
 
@@ -366,14 +367,14 @@ const Quizzes = () => {
               {currentQuiz < quizzes.length - 1 ? (
                 <button
                   onClick={nextQuiz}
-                  className="bg-gradient-to-r from-purple-500 to-blue-500 text-white px-8 py-3 rounded-xl font-semibold hover:scale-105 transition-transform duration-200 shadow-lg"
+                  className="bg-gradient-to-r from-[#2C7A7B] to-[#4FD1C5] text-white px-8 py-3 rounded-xl font-semibold hover:scale-105 transition-transform duration-200 shadow-lg"
                 >
                   Next Question →
                 </button>
               ) : (
                 <button
                   onClick={() => setShowResult(true)}
-                  className="bg-gradient-to-r from-green-500 to-blue-500 text-white px-8 py-3 rounded-xl font-semibold hover:scale-105 transition-transform duration-200 shadow-lg"
+                  className="bg-gradient-to-r from-[#319795] to-[#4FD1C5] text-white px-8 py-3 rounded-xl font-semibold hover:scale-105 transition-transform duration-200 shadow-lg"
                 >
                   View Results
                 </button>
@@ -382,9 +383,9 @@ const Quizzes = () => {
           )}
         </div>
       ) : (
-        <div className="bg-gradient-to-r from-purple-500 via-blue-500 to-green-500 rounded-2xl p-8 text-white text-center relative overflow-hidden">
+        <div className="bg-gradient-to-r from-[#2C7A7B] to-[#4FD1C5] rounded-2xl p-8 text-white text-center relative overflow-hidden">
           <div className="absolute inset-0 bg-white/10 animate-pulse"></div>
-          <Trophy className="w-20 h-20 mx-auto mb-4 text-yellow-300 animate-bounce" />
+          <Trophy className="w-20 h-20 mx-auto mb-4 text-[#E6FFFA] animate-bounce" />
           <h3 className="text-3xl font-bold mb-4">Quiz Completed!</h3>
           <p className="text-xl mb-6">
             You scored {score} out of {quizzes.length} questions
@@ -397,13 +398,25 @@ const Quizzes = () => {
           </div>
           <button
             onClick={resetQuiz}
-            className="bg-white text-purple-600 px-8 py-3 rounded-xl font-semibold hover:scale-105 transition-transform duration-200 flex items-center space-x-2 mx-auto shadow-lg"
+            className="bg-white text-[#2C7A7B] px-8 py-3 rounded-xl font-semibold hover:scale-105 transition-transform duration-200 flex items-center space-x-2 mx-auto shadow-lg"
           >
             <RefreshCw className="w-5 h-5" />
             <span>Take Quiz Again</span>
           </button>
         </div>
       )}
+      
+      <style>
+        {`
+        .animate-fade-in {
+          animation: fadeIn 0.3s ease-out;
+        }
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(10px);}
+          to { opacity: 1; transform: translateY(0);}
+        }
+        `}
+      </style>
     </div>
   );
 };

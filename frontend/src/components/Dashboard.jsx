@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import AQICard from './AQICard';
 import PollutantCard from './PollutantCard';
@@ -196,14 +197,14 @@ const Dashboard = () => {
   }, [hasData, currentData.coordinates]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-violet-50 via-blue-50 to-cyan-50 p-4">
+    <div className="min-h-screen bg-gradient-to-br from-[#E6FFFA] via-[#F7FAFC] to-[#EDF2F7] p-4">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-8 animate-fade-in">
-          <h1 className="text-5xl font-bold bg-gradient-to-r from-violet-600 via-blue-600 to-cyan-600 bg-clip-text text-transparent mb-2">
+          <h1 className="text-5xl font-bold bg-gradient-to-r from-[#2C7A7B] via-[#319795] to-[#4FD1C5] bg-clip-text text-transparent mb-2">
             Air Quality Dashboard
           </h1>
-          <p className="text-gray-600 text-lg">Real-time Environmental Monitoring</p>
+          <p className="text-[#A0AEC0] text-lg">Real-time Environmental Monitoring</p>
         </div>
 
         {/* Location Input */}
@@ -216,14 +217,14 @@ const Dashboard = () => {
                   value={locationInput}
                   onChange={(e) => setLocationInput(e.target.value)}
                   placeholder="Enter city name or coordinates"
-                  className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all duration-200"
+                  className="w-full px-4 py-3 rounded-xl border border-[#EDF2F7] focus:ring-2 focus:ring-[#4FD1C5] focus:border-transparent outline-none transition-all duration-200 bg-white"
                   disabled={loading}
                 />
               </div>
               <button
                 type="submit"
                 disabled={loading || !locationInput.trim()}
-                className="px-8 py-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-xl font-semibold hover:from-blue-600 hover:to-cyan-600 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
+                className="px-8 py-3 bg-gradient-to-r from-[#2C7A7B] to-[#4FD1C5] text-white rounded-xl font-semibold hover:from-[#319795] hover:to-[#68D391] focus:ring-2 focus:ring-[#4FD1C5] focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
               >
                 {loading ? 'Loading...' : 'Get Air Quality'}
               </button>
@@ -231,7 +232,7 @@ const Dashboard = () => {
             <button
               onClick={getCurrentLocation}
               disabled={gettingLocation || loading}
-              className="px-6 py-3 bg-gradient-to-r from-green-500 to-emerald-500 text-white rounded-xl font-semibold hover:from-green-600 hover:to-emerald-600 focus:ring-2 focus:ring-green-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 flex items-center gap-2"
+              className="px-6 py-3 bg-gradient-to-r from-[#38A169] to-[#68D391] text-white rounded-xl font-semibold hover:from-[#2F855A] hover:to-[#48BB78] focus:ring-2 focus:ring-[#68D391] focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 flex items-center gap-2"
             >
               <MapPin size={20} />
               {gettingLocation ? 'Getting Location...' : 'Use My Location'}
@@ -239,7 +240,7 @@ const Dashboard = () => {
           </div>
           
           {error && (
-            <div className="mt-4 p-4 bg-red-100 border border-red-300 text-red-700 rounded-xl">
+            <div className="mt-4 p-4 bg-[#FED7D7] border border-[#E53E3E] text-[#E53E3E] rounded-xl">
               {error}
             </div>
           )}
@@ -249,8 +250,8 @@ const Dashboard = () => {
           <>
             {/* Last Updated Info */}
             <div className="text-center mb-6">
-              <div className="text-sm text-gray-500 flex items-center justify-center gap-2">
-                <Activity className="text-green-500" size={16} />
+              <div className="text-sm text-[#A0AEC0] flex items-center justify-center gap-2">
+                <Activity className="text-[#38A169]" size={16} />
                 Last updated: {currentData.lastUpdated.toLocaleTimeString()}
               </div>
             </div>
@@ -260,12 +261,12 @@ const Dashboard = () => {
               <AQICard aqi={currentData.aqi} location={currentData.location} />
             </div>
 
-            {/* Map Section - Moved here, above Health Recommendations */}
+            {/* Map Section */}
             {currentData.coordinates.lat !== 0 && currentData.coordinates.lng !== 0 && (
               <div className="mb-8">
-                <div className="bg-white rounded-2xl shadow-xl p-6 border border-gray-200 relative z-10">
-                  <h3 className="text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2">
-                    <MapPin className="text-blue-600" size={24} />
+                <div className="bg-white rounded-2xl shadow-xl p-6 border border-[#EDF2F7] relative z-10">
+                  <h3 className="text-xl font-semibold text-[#2C7A7B] mb-4 flex items-center gap-2">
+                    <MapPin className="text-[#4FD1C5]" size={24} />
                     Air Quality Map - {currentData.location}
                   </h3>
                   <div className="h-96 rounded-xl overflow-hidden relative z-0">
@@ -301,67 +302,67 @@ const Dashboard = () => {
 
             {/* Weather Info Cards */}
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
-              <div className="bg-gradient-to-br from-orange-100 to-red-100 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-orange-200">
+              <div className="bg-gradient-to-br from-[#F6AD55] to-[#ECC94B] backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-[#EDF2F7]">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-orange-700 text-sm font-medium">Temperature</p>
-                    <p className="text-3xl font-bold text-orange-800">{currentData.temperature.toFixed(3)}°C</p>
+                    <p className="text-orange-800 text-sm font-medium">Temperature</p>
+                    <p className="text-3xl font-bold text-orange-900">{currentData.temperature.toFixed(3)}°C</p>
                     <div className="mt-2 w-full bg-orange-200 rounded-full h-2">
                       <div 
-                        className="bg-gradient-to-r from-orange-400 to-red-500 h-2 rounded-full transition-all duration-1000"
+                        className="bg-gradient-to-r from-orange-400 to-orange-600 h-2 rounded-full transition-all duration-1000"
                         style={{ width: `${Math.min(Math.max((currentData.temperature + 10) / 50 * 100, 0), 100)}%` }}
                       ></div>
                     </div>
                   </div>
-                  <Thermometer className="text-orange-600" size={32} />
+                  <Thermometer className="text-orange-700" size={32} />
                 </div>
               </div>
 
-              <div className="bg-gradient-to-br from-blue-100 to-cyan-100 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-blue-200">
+              <div className="bg-gradient-to-br from-[#4FD1C5] to-[#319795] backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-[#EDF2F7]">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-blue-700 text-sm font-medium">Humidity</p>
-                    <p className="text-3xl font-bold text-blue-800">{currentData.humidity.toFixed(3)}%</p>
-                    <div className="mt-2 w-full bg-blue-200 rounded-full h-2">
+                    <p className="text-white text-sm font-medium">Humidity</p>
+                    <p className="text-3xl font-bold text-white">{currentData.humidity.toFixed(3)}%</p>
+                    <div className="mt-2 w-full bg-teal-200 rounded-full h-2">
                       <div 
-                        className="bg-gradient-to-r from-blue-400 to-cyan-500 h-2 rounded-full transition-all duration-1000"
+                        className="bg-gradient-to-r from-teal-400 to-teal-600 h-2 rounded-full transition-all duration-1000"
                         style={{ width: `${Math.min(currentData.humidity, 100)}%` }}
                       ></div>
                     </div>
                   </div>
-                  <Droplets className="text-blue-600" size={32} />
+                  <Droplets className="text-white" size={32} />
                 </div>
               </div>
 
-              <div className="bg-gradient-to-br from-gray-100 to-slate-100 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-gray-200">
+              <div className="bg-gradient-to-br from-[#A0AEC0] to-[#718096] backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-[#EDF2F7]">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-gray-700 text-sm font-medium">Wind Speed</p>
-                    <p className="text-3xl font-bold text-gray-800">{currentData.windSpeed.toFixed(3)} km/h</p>
+                    <p className="text-white text-sm font-medium">Wind Speed</p>
+                    <p className="text-3xl font-bold text-white">{currentData.windSpeed.toFixed(3)} km/h</p>
                     <div className="mt-2 w-full bg-gray-200 rounded-full h-2">
                       <div 
-                        className="bg-gradient-to-r from-gray-400 to-slate-500 h-2 rounded-full transition-all duration-1000"
+                        className="bg-gradient-to-r from-gray-400 to-gray-600 h-2 rounded-full transition-all duration-1000"
                         style={{ width: `${Math.min((currentData.windSpeed / 30) * 100, 100)}%` }}
                       ></div>
                     </div>
                   </div>
-                  <Wind className="text-gray-600" size={32} />
+                  <Wind className="text-white" size={32} />
                 </div>
               </div>
 
-              <div className="bg-gradient-to-br from-purple-100 to-violet-100 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-purple-200">
+              <div className="bg-gradient-to-br from-[#2C7A7B] to-[#285E61] backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-[#EDF2F7]">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-purple-700 text-sm font-medium">Visibility</p>
-                    <p className="text-3xl font-bold text-purple-800">{currentData.visibility.toFixed(3)} km</p>
-                    <div className="mt-2 w-full bg-purple-200 rounded-full h-2">
+                    <p className="text-white text-sm font-medium">Visibility</p>
+                    <p className="text-3xl font-bold text-white">{currentData.visibility.toFixed(3)} km</p>
+                    <div className="mt-2 w-full bg-teal-200 rounded-full h-2">
                       <div 
-                        className="bg-gradient-to-r from-purple-400 to-violet-500 h-2 rounded-full transition-all duration-1000"
+                        className="bg-gradient-to-r from-teal-400 to-teal-600 h-2 rounded-full transition-all duration-1000"
                         style={{ width: `${Math.min((currentData.visibility / 15) * 100, 100)}%` }}
                       ></div>
                     </div>
                   </div>
-                  <Eye className="text-purple-600" size={32} />
+                  <Eye className="text-white" size={32} />
                 </div>
               </div>
             </div>
@@ -379,46 +380,46 @@ const Dashboard = () => {
                 value={currentData.pollutants.pm25.toFixed(1)} 
                 unit="μg/m³"
                 description="Fine particulate matter"
-                color="from-red-400 to-rose-600"
+                color="from-[#E53E3E] to-red-600"
               />
               <PollutantCard 
                 name="PM10" 
                 value={currentData.pollutants.pm10.toFixed(1)} 
                 unit="μg/m³"
                 description="Coarse particulate matter"
-                color="from-orange-400 to-amber-600"
+                color="from-[#F6AD55] to-[#ECC94B]"
               />
               <PollutantCard 
                 name="O₃" 
                 value={currentData.pollutants.o3.toFixed(1)} 
                 unit="μg/m³"
                 description="Ground-level ozone"
-                color="from-blue-400 to-cyan-600"
+                color="from-[#4FD1C5] to-[#319795]"
               />
               <PollutantCard 
                 name="NO₂" 
                 value={currentData.pollutants.no2.toFixed(1)} 
                 unit="μg/m³"
                 description="Nitrogen dioxide"
-                color="from-yellow-400 to-orange-600"
+                color="from-[#F6AD55] to-[#ECC94B]"
               />
               <PollutantCard 
                 name="CO" 
                 value={currentData.pollutants.co.toFixed(1)} 
                 unit="mg/m³"
                 description="Carbon monoxide"
-                color="from-gray-400 to-slate-600"
+                color="from-[#A0AEC0] to-[#718096]"
               />
-              <div className="bg-gradient-to-br from-emerald-100 to-green-100 backdrop-blur-lg rounded-2xl p-6 shadow-xl border border-emerald-200">
+              <div className="bg-gradient-to-br from-[#C6F6D5] to-[#68D391] backdrop-blur-lg rounded-2xl p-6 shadow-xl border border-[#EDF2F7]">
                 <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-lg font-semibold text-emerald-800">Overall Status</h3>
-                  <TrendingUp className="text-emerald-600" size={24} />
+                  <h3 className="text-lg font-semibold text-[#22543D]">Overall Status</h3>
+                  <TrendingUp className="text-[#38A169]" size={24} />
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-emerald-700 mb-2">
+                  <div className="text-3xl font-bold text-[#22543D] mb-2">
                     {currentData.aqi <= 50 ? 'Good' : currentData.aqi <= 100 ? 'Moderate' : currentData.aqi <= 150 ? 'Unhealthy for Sensitive' : currentData.aqi <= 200 ? 'Unhealthy' : 'Very Unhealthy'}
                   </div>
-                  <p className="text-emerald-600 text-sm">Air quality assessment</p>
+                  <p className="text-[#38A169] text-sm">Air quality assessment</p>
                 </div>
               </div>
             </div>
@@ -432,15 +433,35 @@ const Dashboard = () => {
 
         {!hasData && !loading && !gettingLocation && (
           <div className="text-center py-12">
-            <div className="text-gray-500 text-lg mb-4">
+            <div className="text-[#2C7A7B] text-lg mb-4">
               Click "Use My Location" to view your local air quality or enter a city name/coordinates
             </div>
-            <div className="text-sm text-gray-400">
+            <div className="text-sm text-[#A0AEC0]">
               Examples: "Mumbai", "New Delhi", "19.0760,72.8777"
             </div>
           </div>
         )}
       </div>
+
+      {/* Animations */}
+      <style>
+        {`
+        .animate-fade-in {
+          animation: fadeIn 0.6s ease-out;
+        }
+        .animate-scale-in {
+          animation: scaleIn 0.5s ease-out;
+        }
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(10px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes scaleIn {
+          from { opacity: 0; transform: scale(0.95); }
+          to { opacity: 1; transform: scale(1); }
+        }
+        `}
+      </style>
     </div>
   );
 };
