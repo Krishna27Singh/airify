@@ -33,7 +33,7 @@ const Navbar = () => {
           <div className="flex items-center gap-2">
             {/* <Wind className="h-8 w-8 text-[#2C7A7B]" /> */}
             <span className="text-2xl font-bold text-[#2C7A7B] tracking-wide">
-              BreathSafe
+              BreatheSafe
             </span>
           </div>
 

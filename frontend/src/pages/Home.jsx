@@ -64,7 +64,7 @@ const Home = () => {
       <section className="relative overflow-hidden bg-gradient-to-br from-[#E6FFFA] via-[#F7FAFC] to-[#EDF2F7] pb-12 pt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
           <h1 className="text-5xl md:text-6xl font-bold text-[#2C7A7B] mb-6 animate-fade-in-slow">
-            Breathe Better with <span className="text-[#4FD1C5]">BreathSafe</span>
+            Breathe Better with <span className="text-[#4FD1C5]">BreatheSafe</span>
           </h1>
           <p className="text-lg md:text-xl text-[#319795] mb-8 max-w-2xl mx-auto animate-fade-in">
             Real-time air quality monitoring, personalized health insights, and a vibrant community for a cleaner, safer tomorrow.
@@ -90,7 +90,7 @@ const Home = () => {
       {/* About/Features Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <h2 className="text-3xl md:text-4xl font-bold text-center text-[#2C7A7B] mb-10 animate-fade-in-slow">
-          Why Choose BreathSafe?
+          Why Choose BreatheSafe?
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((f, idx) => (
@@ -114,7 +114,7 @@ const Home = () => {
             Start Monitoring Your Air Quality Today
           </h2>
           <p className="text-lg md:text-xl text-[#E6FFFA] mb-8">
-            Join thousands of users who trust BreathSafe for accurate, real-time environmental data and health insights.
+            Join thousands of users who trust BreatheSafe for accurate, real-time environmental data and health insights.
           </p>
           <Link
             to="/dashboard"
