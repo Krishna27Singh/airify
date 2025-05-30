@@ -87,6 +87,22 @@ const Home = () => {
         </div>
       </section>
 
+      <section>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-center text-[#2C7A7B] mb-10 animate-fade-in-slow">
+                How much time did you spent outside today ? Get your health risk score now!
+            </h2>
+
+           <Link
+  to="https://breathesafe.streamlit.app/"
+  className="bg-gradient-to-r from-[#2C7A7B] to-[#4FD1C5] text-white px-6 py-6 rounded-lg font-semibold text-lg hover:from-[#319795] hover:to-[#68D391] transition-all duration-200 flex justify-center items-center text-center shadow-lg hover:shadow-xl transform hover:scale-105"
+>
+  Health Risk Score Prediction & Pollution Anomaly Detection
+</Link>
+
+          </div>
+      </section>
+
       {/* About/Features Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <h2 className="text-3xl md:text-4xl font-bold text-center text-[#2C7A7B] mb-10 animate-fade-in-slow">
