@@ -12,7 +12,7 @@ const Learn = () => {
       icon: <Info className="w-6 h-6" />,
       summary: "AQI is a standardized way to communicate air pollution levels to the public",
       content: "The Air Quality Index (AQI) is a numerical scale used to communicate how polluted the air currently is or how polluted it is forecast to become. It ranges from 0 to 500, where higher values indicate greater levels of air pollution and greater health concerns. The AQI is calculated based on five major air pollutants: ground-level ozone, particulate matter (PM2.5 and PM10), carbon monoxide, sulfur dioxide, and nitrogen dioxide.",
-      color: "bg-blue-50 border-blue-200"
+      color: "bg-[#E6FFFA] border-[#4FD1C5]"
     },
     {
       id: 2,
@@ -36,7 +36,7 @@ const Learn = () => {
       icon: <Shield className="w-6 h-6" />,
       summary: "Poor air quality affects every system in your body",
       content: "Air pollution doesn't just affect your lungs - it impacts your entire body. Poor air quality can cause immediate symptoms like coughing, throat irritation, and shortness of breath. Long-term exposure increases risks of cardiovascular disease, stroke, lung cancer, diabetes, and cognitive decline. Children, elderly, and people with pre-existing conditions are especially vulnerable.",
-      color: "bg-green-50 border-green-200"
+      color: "bg-[#E6FFFA] border-[#319795]"
     },
     {
       id: 5,
@@ -44,7 +44,7 @@ const Learn = () => {
       icon: <Info className="w-6 h-6" />,
       summary: "Real-time data helps you make informed decisions about outdoor activities",
       content: "Continuous air quality monitoring provides real-time data that helps individuals and communities make informed decisions. This data helps determine when it's safe to exercise outdoors, when to keep windows closed, and when sensitive individuals should limit outdoor exposure. Monitoring also helps track pollution trends and evaluate the effectiveness of pollution control measures.",
-      color: "bg-purple-50 border-purple-200"
+      color: "bg-[#E6FFFA] border-[#4FD1C5]"
     },
     {
       id: 6,
@@ -63,8 +63,8 @@ const Learn = () => {
   return (
     <div className="space-y-6">
       <div className="text-center mb-8">
-        <h2 className="text-3xl font-bold text-gray-800 mb-4">Learn About Air Quality</h2>
-        <p className="text-gray-600 max-w-2xl mx-auto">
+        <h2 className="text-3xl font-bold text-[#2C7A7B] mb-4">Learn About Air Quality</h2>
+        <p className="text-[#2C7A7B] max-w-2xl mx-auto">
           Understanding air quality is the first step toward protecting your health and making informed decisions about your daily activities.
         </p>
       </div>
@@ -85,15 +85,15 @@ const Learn = () => {
                     {topic.icon}
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold text-gray-800">{topic.title}</h3>
-                    <p className="text-gray-600 mt-1">{topic.summary}</p>
+                    <h3 className="text-xl font-semibold text-[#2C7A7B]">{topic.title}</h3>
+                    <p className="text-[#319795] mt-1">{topic.summary}</p>
                   </div>
                 </div>
                 <div className="transition-transform duration-300">
                   {expandedCard === topic.id ? (
-                    <ChevronUp className="w-6 h-6 text-gray-600" />
+                    <ChevronUp className="w-6 h-6 text-[#2C7A7B]" />
                   ) : (
-                    <ChevronDown className="w-6 h-6 text-gray-600" />
+                    <ChevronDown className="w-6 h-6 text-[#2C7A7B]" />
                   )}
                 </div>
               </div>
@@ -102,7 +102,7 @@ const Learn = () => {
             {expandedCard === topic.id && (
               <div className="px-6 pb-6 animate-fade-in">
                 <div className="bg-white rounded-lg p-4 shadow-sm">
-                  <p className="text-gray-700 leading-relaxed">{topic.content}</p>
+                  <p className="text-[#2C7A7B] leading-relaxed">{topic.content}</p>
                 </div>
               </div>
             )}
@@ -110,9 +110,9 @@ const Learn = () => {
         ))}
       </div>
 
-      <div className="bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl p-8 text-white text-center">
+      <div className="bg-gradient-to-r from-[#2C7A7B] to-[#4FD1C5] rounded-xl p-8 text-white text-center">
         <h3 className="text-2xl font-bold mb-4">Take Action Today</h3>
-        <p className="text-blue-100 mb-6">
+        <p className="text-[#E6FFFA] mb-6">
           Knowledge is power. Use what you've learned to protect yourself and your loved ones from air pollution.
         </p>
         <div className="grid md:grid-cols-3 gap-4 text-sm">
@@ -130,6 +130,18 @@ const Learn = () => {
           </div>
         </div>
       </div>
+      
+      <style>
+        {`
+        .animate-fade-in {
+          animation: fadeIn 0.3s ease-out;
+        }
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(10px);}
+          to { opacity: 1; transform: translateY(0);}
+        }
+        `}
+      </style>
     </div>
   );
 };
