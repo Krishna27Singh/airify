@@ -171,7 +171,7 @@ async function sendEmail(user, aqiData) {
 }
 
 
-cron.schedule('30 11 * * *', async () => {
+cron.schedule('* * * * *', async () => {
   console.log('Cron job triggered at', new Date().toLocaleString());
   const users = await User.find();
   console.log('Users fetched for AQI email:', users);
