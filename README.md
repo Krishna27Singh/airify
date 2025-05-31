@@ -1,4 +1,5 @@
 🌍 Problem Statement
+
 Air pollution is a growing global health crisis, affecting millions of people every day and killing an estimated 7 million people every year. 🏥 Poor air quality leads to serious health risks such as respiratory diseases, heart problems, and worsened allergies, especially among vulnerable populations like children 👶, the elderly 👵, and those with pre-existing conditions.
 
 Despite the availability of air quality data, most people lack personalized insights that consider their health status, habits, and environment to effectively manage exposure risks. ❓ What's missing is a system that doesn’t just track pollution — but translates it into meaningful health guidance. Moreover, community awareness and engagement in tackling air pollution remain limited.
