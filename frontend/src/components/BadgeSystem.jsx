@@ -127,7 +127,6 @@ const BadgeSystem = () => {
         </div>
       </div>
 
-      {/* Earned Badges */}
       {badges.length > 0 && (
         <section>
           <h3 className="text-3xl font-bold text-[#2C7A7B] mb-6 flex items-center justify-center gap-2">
@@ -159,7 +158,6 @@ const BadgeSystem = () => {
         </section>
       )}
 
-      {/* Available Badges */}
       <section>
         <h3 className="text-3xl font-bold text-[#2C7A7B] mb-6 flex items-center justify-center gap-2">
           <Target className="w-7 h-7 text-[#2C7A7B]" />

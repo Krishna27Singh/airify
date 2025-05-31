@@ -277,7 +277,6 @@ const ReportProblems = () => {
           </div>
         </div>
 
-        {/* Map Section (Placeholder for Leaflet Map) */}
         <div className="mt-8">
   <div className="bg-white/80 backdrop-blur-lg rounded-2xl p-6 shadow-xl">
     <h2 className="text-2xl font-bold text-gray-800 mb-6">Reports Map</h2>
@@ -288,7 +287,6 @@ const ReportProblems = () => {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         />
 
-        {/* Render markers for each report */}
         {reports.map((report) => (
           <Marker key={report._id} position={report.coordinates}>
             <Popup>

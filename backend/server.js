@@ -1,15 +1,11 @@
 const app = require("./app");
 const connectDB = require("./config/db");
 
-
 const PORT = process.env.PORT || 8000;
 
-connectDB();
 
 const bodyParser = require('body-parser');
-
 const User = require('./models/User'); 
-
 const axios = require('axios');
 const cron = require('node-cron');
 const nodemailer = require('nodemailer');
@@ -23,7 +19,7 @@ require('./config/passport');
 const reportRoutes = require('./routes/reportRoutes');
 
 app.use(cors({
-  origin: 'http://localhost:8080', // Match your frontend's exact origin
+  origin: 'http://localhost:8080', 
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
 }));
@@ -34,15 +30,8 @@ app.use(session({
   secret: process.env.COOKIE_KEY || "Sj7h2vF9gD*sk@1L!x9v3QeXlA0tZqBz",
   resave: false,
   saveUninitialized: false,
-  cookie: { maxAge: 24 * 60 * 60 * 1000 } // 1 day
+  cookie: { maxAge: 24 * 60 * 60 * 1000 } 
 }));
-
-
-// app.use(cors({
-//   origin: process.env.CLIENT_URL,
-//   methods: 'GET,POST,PUT,DELETE',
-//   credentials: true,
-// }));
 
 app.use(bodyParser.json());
 app.use(passport.initialize());

@@ -13,7 +13,6 @@ const Quizzes = () => {
 
   const { addBadge, updateAchievements, achievements } = useContext(BadgeContext);
 
-  // ... keep existing code (quizzes array and other logic)
   const quizzes = [
     {
       id: 1,
@@ -237,7 +236,6 @@ const Quizzes = () => {
     setTimeSpent(0);
   };
 
-  // Start timer when component loads
   React.useEffect(() => {
     setStartTime(Date.now());
   }, []);

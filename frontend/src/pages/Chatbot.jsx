@@ -13,7 +13,6 @@ const Chatbot = () => {
       const newMessage = { id: Date.now(), text: inputMessage, sender: 'user' };
       setMessages([...messages, newMessage]);
       
-      // Simulate bot response
       setTimeout(() => {
         const botResponse = {
           id: Date.now() + 1,

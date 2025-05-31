@@ -21,14 +21,11 @@ const Login = () => {
       );
       const { token, name, email } = response.data;
 
-      // Save the token and user data to localStorage
       localStorage.setItem("token", token);
       localStorage.setItem("user", JSON.stringify({ email, name }));
 
-      // Set the user in the context
       setUser({ email, name });
 
-      // Navigate to the home page
       navigate("/home");
     } catch (error) {
       alert(error.response?.data?.message || "Login failed");

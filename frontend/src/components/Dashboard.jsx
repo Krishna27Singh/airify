@@ -9,7 +9,6 @@ import { Wind, Thermometer, Droplets, Eye, Activity, TrendingUp, MapPin } from '
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 
-// Fix for default markers in react-leaflet
 import L from 'leaflet';
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
@@ -53,7 +52,6 @@ const Dashboard = () => {
     try {
       console.log('Fetching data for location:', location);
       
-      // Check if location is coordinates (lat,lng format)
       const coordPattern = /^-?\d+\.?\d*,-?\d+\.?\d*$/;
       const isCoordinates = coordPattern.test(location.replace(/\s/g, ''));
       
@@ -75,7 +73,6 @@ const Dashboard = () => {
       if (data.status === 'ok' && data.data) {
         const aqiData = data.data;
         
-        // Extract pollutant data safely
         const pollutants = {
           pm25: aqiData.iaqi?.pm25?.v || 0,
           pm10: aqiData.iaqi?.pm10?.v || 0,
@@ -84,13 +81,11 @@ const Dashboard = () => {
           co: aqiData.iaqi?.co?.v || 0
         };
 
-        // Extract weather data safely
         const temperature = aqiData.iaqi?.t?.v || 0;
         const humidity = aqiData.iaqi?.h?.v || 0;
         const windSpeed = aqiData.iaqi?.w?.v || 0;
         const pressure = aqiData.iaqi?.p?.v || 0;
 
-        // Get coordinates from API data
         const coordinates = aqiData.city?.geo ? 
           { lat: aqiData.city.geo[0], lng: aqiData.city.geo[1] } : 
           { lat: 0, lng: 0 };
@@ -100,7 +95,7 @@ const Dashboard = () => {
           location: aqiData.city?.name || location,
           temperature: temperature,
           humidity: humidity,
-          visibility: pressure > 0 ? Math.round(pressure / 100) : 10, // Approximate visibility from pressure
+          visibility: pressure > 0 ? Math.round(pressure / 100) : 10, 
           windSpeed: windSpeed,
           pollutants: pollutants,
           lastUpdated: new Date(),
@@ -139,7 +134,6 @@ const Dashboard = () => {
         console.log('Location obtained:', { latitude, longitude, accuracy });
         console.log('Accuracy:', accuracy, 'meters');
         
-        // Use the coordinates directly for better accuracy
         fetchAirQualityData(`${latitude.toFixed(6)},${longitude.toFixed(6)}`);
         setGettingLocation(false);
       },
@@ -167,8 +161,8 @@ const Dashboard = () => {
       },
       {
         enableHighAccuracy: true,
-        timeout: 15000, // Increased timeout
-        maximumAge: 60000 // 1 minute cache
+        timeout: 15000, 
+        maximumAge: 60000 
       }
     );
   };
@@ -180,12 +174,10 @@ const Dashboard = () => {
     }
   };
 
-  // Get current location on component mount
   useEffect(() => {
     getCurrentLocation();
   }, []);
 
-  // Auto-refresh data every 10 minutes if we have a location
   useEffect(() => {
     if (hasData && currentData.coordinates.lat !== 0) {
       const interval = setInterval(() => {
