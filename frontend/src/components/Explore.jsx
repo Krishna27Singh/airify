@@ -6,7 +6,6 @@ import Scenarios from "../components/Scenarios";
 import Videos from "../components/Videos";
 import BadgeSystem from "../components/BadgeSystem";
 
-// Create a context for managing badges and achievements
 export const BadgeContext = createContext();
 
 const Explore = () => {
@@ -102,7 +101,7 @@ const Explore = () => {
                     ? 'bg-gradient-to-r from-[#2C7A7B] to-[#4FD1C5] text-white shadow-xl scale-105'
                     : 'bg-white/90 backdrop-blur text-[#2C7A7B] hover:scale-105 hover:shadow-lg'
                   }`}
-                style={{ border: "none" }} // Remove direct border
+                style={{ border: "none" }} 
               >
                 <div className={`p-1 rounded-lg ${activeTab === tab.id ? 'bg-white/20' : 'bg-[#E6FFFA]'}`}>
                   {tab.icon}

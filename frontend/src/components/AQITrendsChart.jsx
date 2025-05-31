@@ -13,7 +13,6 @@ const AQITrendsChart = () => {
 
   const WAQI_TOKEN = '2d0cb996f45520d273a8e6ebc45c7742225d23b0';
 
-  // Get user's current location
   useEffect(() => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -26,7 +25,6 @@ const AQITrendsChart = () => {
         (error) => {
           console.error('Error getting location:', error);
           setError('Unable to get your location. Using default location.');
-          // Fallback to a default location (San Francisco)
           setLocation({ lat: 37.7749, lng: -122.4194 });
         }
       );
@@ -36,7 +34,6 @@ const AQITrendsChart = () => {
     }
   }, []);
 
-  // Fetch air quality data when location is available
   useEffect(() => {
     if (location) {
       fetchAirQualityData();
@@ -65,14 +62,12 @@ const AQITrendsChart = () => {
     }
   };
 
-  // Transform API data for chart display
   const getChartData = () => {
     if (!airQualityData || !airQualityData.iaqi) return [];
 
     const pollutants = [];
     const iaqi = airQualityData.iaqi;
 
-    // Add available pollutants
     if (iaqi.pm25) pollutants.push({ name: 'PM2.5', value: iaqi.pm25.v, color: '#ef4444' });
     if (iaqi.pm10) pollutants.push({ name: 'PM10', value: iaqi.pm10.v, color: '#f59e0b' });
     if (iaqi.so2) pollutants.push({ name: 'SO2', value: iaqi.so2.v, color: '#8b5cf6' });
@@ -164,7 +159,6 @@ const AQITrendsChart = () => {
         </div>
       </div>
 
-      {/* Current AQI Display */}
       {airQualityData && (
         <div className="mb-6">
           <div className="flex items-center gap-4 mb-4">
@@ -191,7 +185,6 @@ const AQITrendsChart = () => {
         </div>
       )}
 
-      {/* Pollutants Chart */}
       <div className="h-80">
         <ResponsiveContainer width="100%" height="100%">
           {chartType === 'bar' ? (
@@ -242,7 +235,6 @@ const AQITrendsChart = () => {
         </ResponsiveContainer>
       </div>
 
-      {/* Legend */}
       <div className="flex justify-center mt-4 gap-6 flex-wrap">
         {chartData.map((item, index) => (
           <div key={index} className="flex items-center gap-2">
@@ -255,7 +247,6 @@ const AQITrendsChart = () => {
         ))}
       </div>
 
-      {/* Health Information */}
       {airQualityData && (
         <div className="mt-6 p-4 bg-gray-50 rounded-lg">
           <h4 className="font-semibold text-gray-800 mb-2">Health Information</h4>

@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const Report = require('../models/Report');
 
-// GET all reports
 router.get('/report', async (req, res) => {
   try {
     const reports = await Report.find();
@@ -12,7 +11,6 @@ router.get('/report', async (req, res) => {
   }
 });
 
-// POST a new report
 router.post('/report', async (req, res) => {
   const { userName, email, mobile, location, subject, message, coordinates } = req.body;
 

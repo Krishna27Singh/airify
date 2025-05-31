@@ -23,10 +23,8 @@ const AQICard = ({ aqi, location }) => {
           <span className="text-gray-700 text-lg">{location}</span>
         </div>
         
-        {/* AQI Circular Progress */}
         <div className="relative w-48 h-48 mx-auto mb-6">
           <svg className="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
-            {/* Background circle */}
             <circle
               cx="50"
               cy="50"
@@ -36,7 +34,6 @@ const AQICard = ({ aqi, location }) => {
               fill="none"
               className="text-gray-200"
             />
-            {/* Progress circle */}
             <circle
               cx="50"
               cy="50"
@@ -56,7 +53,6 @@ const AQICard = ({ aqi, location }) => {
             </defs>
           </svg>
           
-          {/* AQI Value in center */}
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="text-center">
               <div className="text-4xl font-bold text-gray-800 animate-pulse">{Math.round(aqi)}</div>
@@ -65,7 +61,6 @@ const AQICard = ({ aqi, location }) => {
           </div>
         </div>
 
-        {/* AQI Level */}
         <div className={`inline-block px-6 py-3 rounded-full bg-gradient-to-r ${aqiInfo.color} text-white font-semibold text-lg shadow-lg`}>
           {aqiInfo.level}
         </div>
