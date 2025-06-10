@@ -6,7 +6,6 @@ export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    // Restore user from localStorage if available
     const savedUser = JSON.parse(localStorage.getItem("user"));
     const token = localStorage.getItem("token");
 

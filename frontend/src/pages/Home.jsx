@@ -14,6 +14,7 @@ import {
   Award,
   BrainCircuit,
   Smartphone,
+  Bell,
 } from 'lucide-react';
 
 const features = [
@@ -57,6 +58,12 @@ const features = [
     title: "Cross-platform Accessibility",
     desc: "Available across devices with a responsive UI, ensuring you stay informed anytime, anywhere.",
   },
+  {
+    icon: <Bell size={32} className="text-[#D9534F]" />,
+    title: "AI-Powered Alerts",
+    desc: "Real-time AI agent sends automated alerts to users and authorities, ensuring immediate action during critical air quality spikes.",
+},
+
 ];
 
 const Home = () => {
