@@ -1,6 +1,6 @@
 require('dotenv').config();
+// const { OpenAI } = require('langchain/llms');
 const { initializeAgentExecutor } = require('langchain/agents');
-const { OpenAI } = require('langchain');
 const axios = require('axios');
 const nodemailer = require('nodemailer');
 const cron = require('node-cron');
