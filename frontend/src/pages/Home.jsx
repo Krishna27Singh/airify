@@ -1,4 +1,6 @@
-import React from 'react';
+// import React from 'react';
+import React, { useState, useEffect } from 'react';
+
 import { Link } from 'react-router-dom';
 import {
   ArrowRight,
@@ -58,6 +60,89 @@ const features = [
 ];
 
 const Home = () => {
+ 
+
+const [aiSummary, setAiSummary] = useState('');
+const [loading, setLoading] = useState(false);
+const [error, setError] = useState('');
+const [gettingLocation, setGettingLocation] = useState(false);
+
+
+const handleGenerateSummary = async (lat, lng) => {
+  setLoading(true);
+  setAiSummary('');
+  setError('');
+
+  try {
+    const location = lat && lng ? `${lat},${lng}` : 'Delhi'; // fallback
+    const res = await fetch(`http://localhost:8000/api/aqi-insights?location=${location}`);
+    const data = await res.json();
+
+    if (data.summary) {
+      setAiSummary(data.summary);
+    } else {
+      setError('Failed to generate summary.');
+    }
+  } catch (err) {
+    console.error(err);
+    setError('An error occurred while generating the summary.');
+  } finally {
+    setLoading(false);
+  }
+};
+
+const getCurrentLocation = () => {
+  setGettingLocation(true);
+  setError('');
+
+  if (!navigator.geolocation) {
+    setError('Geolocation is not supported by this browser.');
+    setGettingLocation(false);
+    return;
+  }
+
+  console.log('Requesting high-accuracy location...');
+
+  navigator.geolocation.getCurrentPosition(
+    (position) => {
+      const { latitude, longitude, accuracy } = position.coords;
+      console.log('Location obtained:', { latitude, longitude, accuracy });
+
+      // Call summary generator with coordinates
+      handleGenerateSummary(latitude.toFixed(6), longitude.toFixed(6));
+      setGettingLocation(false);
+    },
+    (error) => {
+      console.error('Geolocation error:', error);
+      let errorMessage = 'Unable to retrieve your location. ';
+
+      switch (error.code) {
+        case error.PERMISSION_DENIED:
+          errorMessage += 'Please allow location access and try again.';
+          break;
+        case error.POSITION_UNAVAILABLE:
+          errorMessage += 'Location information is unavailable.';
+          break;
+        case error.TIMEOUT:
+          errorMessage += 'Location request timed out.';
+          break;
+        default:
+          errorMessage += 'An unknown error occurred.';
+          break;
+      }
+
+      setError(errorMessage + ' Please enter a location manually.');
+      setGettingLocation(false);
+    },
+    {
+      enableHighAccuracy: true,
+      timeout: 15000,
+      maximumAge: 60000,
+    }
+  );
+};
+
+  
   return (
     <div className="min-h-screen bg-[#F7FAFC]">
       {/* Hero Section */}
@@ -86,6 +171,31 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      <section className="bg-white py-10 px-4 text-center">
+  <h2 className="text-2xl md:text-3xl font-semibold text-[#2C7A7B] mb-6">
+    Curious about today's air quality?
+  </h2>
+  <button
+  onClick={getCurrentLocation}
+    className="bg-gradient-to-r from-[#2C7A7B] to-[#4FD1C5] text-white text-lg md:text-xl px-8 py-5 rounded-xl font-bold hover:from-[#319795] hover:to-[#68D391] transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105"
+    disabled={loading}
+  >
+    {loading ? "Generating AI Summary..." : "Generate AI Summary"}
+  </button>
+
+  {aiSummary && (
+    <div className="mt-8 max-w-3xl mx-auto bg-[#E6FFFA] border-l-4 border-[#2C7A7B] p-6 rounded-lg text-left shadow-md text-[#2C7A7B] whitespace-pre-line">
+      <h3 className="font-bold text-xl mb-2">AI Environmental Summary</h3>
+      <p>{aiSummary}</p>
+    </div>
+  )}
+
+  {error && (
+    <p className="text-red-600 mt-4">{error}</p>
+  )}
+</section>
+
 
       <section>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">

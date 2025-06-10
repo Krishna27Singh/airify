@@ -3,7 +3,6 @@ const connectDB = require("./config/db");
 
 const PORT = process.env.PORT || 8000;
 
-
 const bodyParser = require('body-parser');
 const User = require('./models/User'); 
 const axios = require('axios');
@@ -37,6 +36,8 @@ app.use(bodyParser.json());
 app.use(passport.initialize());
 app.use(passport.session());
 
+const geminiRoutes = require('./routes/geminiRoutes');
+app.use('/api/aqi-insights', geminiRoutes);
 
 app.use('/auth', authRoute);
 app.use('/api', reportRoutes);
